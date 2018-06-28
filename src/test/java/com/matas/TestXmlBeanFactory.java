@@ -33,6 +33,7 @@ public class TestXmlBeanFactory {
     @Test
     public void testGetBean() {
         User user = factory.getBean(User.class);
+        System.out.println(factory.getBean("p1"));
         System.out.println(user);
         System.out.println(user.getClass().getClassLoader());
     }
