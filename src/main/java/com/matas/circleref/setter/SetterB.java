@@ -7,13 +7,13 @@ package com.matas.circleref.setter;
  *@email   mataszhang@163.com
  */
 public class SetterB {
-    private SetterC c;
+    private SetterA a;
 
-    public void setC(SetterC c) {
-        this.c = c;
+    public SetterA getA() {
+        return a;
     }
 
-    public SetterC getC() {
-        return c;
+    public void setA(SetterA a) {
+        this.a = a;
     }
 }

@@ -8,6 +8,13 @@ package com.matas.bean;
 public class Person {
     protected String address;
 
+    public Person() {
+    }
+
+    public Person(String address) {
+        this.address = address;
+    }
+
     public String getAddress() {
         return address;
     }

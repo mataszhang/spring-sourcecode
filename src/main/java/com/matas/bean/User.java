@@ -6,8 +6,17 @@ package com.matas.bean;
  * @email mataszhang@163.com
  */
 public class User extends Person {
+
     private String name;
     private Integer age;
+
+    public User() {
+    }
+
+    public User(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public String getName() {
         return name;

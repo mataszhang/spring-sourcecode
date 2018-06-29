@@ -11,4 +11,4 @@
 		http://www.mataszhang.com/schema/user http://www.mataszhang.com/schema/user.xsd">
 
     <myname:user id="test_user" userName="jack" email="mataszhang@163.com"/>
-        </beans>
+</beans>

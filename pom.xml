@@ -125,8 +125,9 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                     <!-- spring3.2和jdk8不兼容-->
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
 

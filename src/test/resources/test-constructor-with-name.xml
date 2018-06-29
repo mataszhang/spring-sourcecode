@@ -7,22 +7,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-    <bean name="person" class="com.matas.bean.Person">
-        <property name="address" value="sz"/>
-    </bean>
-
-    <alias name="person" alias="p1"/>
-
-    <bean name="user" class="com.matas.bean.User" parent="person" lazy-init="true">
-        <property name="name" value="jack"/>
-        <property name="age" value="20"/>
-    </bean>
-
-    <bean id="userFactory" class="com.matas.factorybean.UserFactoryBean" scope="singleton">
-        <property name="info" value="alex-21-sz"/>
-    </bean>
-
-    <bean class="com.matas.lookup.LookUpMethodTest" name="getBeanTest">
-        <lookup-method name="getPerson" bean="person"></lookup-method>
+    <bean name="user" class="com.matas.bean.User">
+        <constructor-arg name="age" value="123"/>
+        <constructor-arg name="name" value="jack"/>
     </bean>
 </beans>

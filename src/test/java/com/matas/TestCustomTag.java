@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
  * @email mataszhang@163.com
  */
 public class TestCustomTag {
+
     private BeanFactory factory;
 
     @Before
@@ -26,7 +27,5 @@ public class TestCustomTag {
         Object test_user = factory.getBean("test_user");
         System.out.println(test_user);
     }
-
-
 
 }
