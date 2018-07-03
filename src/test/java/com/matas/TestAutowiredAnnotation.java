@@ -37,7 +37,6 @@ public class TestAutowiredAnnotation {
         //AutowiredAnnotationBeanPostProcessor注册到spring中
         xbf.addBeanPostProcessor(xbf.getBean(AutowiredAnnotationBeanPostProcessor.class));
         // xbf.addBeanPostProcessor(xbf.getBean(TestBeanPostProcessor.class));
-
         System.out.println("=============Spring中已加载的所有的BeanPostProcessor==========");
         Map<String, BeanPostProcessor> beansOfType = xbf.getBeansOfType(BeanPostProcessor.class);
         for (String key : beansOfType.keySet()) {

@@ -7,8 +7,5 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-    <context:component-scan base-package="com.matas.atuowire"/>
-    <bean id="a" class="com.matas.atuowire.A" autowire="byName"/>
-    <bean id="b" class="com.matas.atuowire.B" autowire="byType"/>
-    <!--<bean class="com.matas.beanpostprocessor.TestBeanPostProcessor" />-->
+    <bean class="com.matas.event.TestListener"/>
 </beans>

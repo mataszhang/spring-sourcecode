@@ -1,9 +1,8 @@
 package com.matas.atuowire;
 
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * @author matas
@@ -14,6 +13,16 @@ import javax.annotation.Resource;
 public class C {
     @Autowired
     private D d;
+    @Autowired
+    private BeanFactory beanFactory;
+
+    public C() {
+        System.out.println("create one C");
+    }
+
+    public BeanFactory getBeanFactory() {
+        return beanFactory;
+    }
 
     public D getD() {
         return d;
