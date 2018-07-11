@@ -18,7 +18,7 @@ public class TestCglib {
         enhancer.setCallbackFilter(new CallbackFilter() {
             @Override
             public int accept(Method method) {
-                //test方法调用第一个callback,其他调用第二个
+                //test方法匹配第一个callback,其他匹配第二个
                 return method.getName().equals("test") ? 0 : 1;
             }
         });

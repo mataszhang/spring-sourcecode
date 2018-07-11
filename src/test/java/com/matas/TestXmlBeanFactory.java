@@ -2,6 +2,7 @@ package com.matas;
 
 import com.matas.atuowire.A;
 import com.matas.atuowire.B;
+import com.matas.bean.Person;
 import com.matas.bean.User;
 import com.matas.lookup.LookUpMethodTest;
 import org.junit.Assert;
@@ -65,7 +66,8 @@ public class TestXmlBeanFactory {
     @Test
     public void testLookupMethod() {
         LookUpMethodTest bean = factory.getBean(LookUpMethodTest.class);
-        bean.test();
+        Person person = bean.getPerson();
+        System.out.println(person);
     }
 
 

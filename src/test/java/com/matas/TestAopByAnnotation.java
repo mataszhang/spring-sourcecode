@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @date 2018/6/30 11:25
  * @email mataszhang@163.com
  */
-public class TestAop {
+public class TestAopByAnnotation {
 
     /**
      * JDK 代理
@@ -21,10 +21,10 @@ public class TestAop {
      */
     @Test
     public void testJdkProxy() throws Throwable {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-aop.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-aop-annotation.xml");
         IHello bean = ctx.getBean(IHello.class);
         String word = bean.sayHello("jack");
-        System.out.println(word);
+        System.err.println(word);
     }
 
     /**
@@ -39,7 +39,7 @@ public class TestAop {
      */
     @Test
     public void testCglibProxy() throws Throwable {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-aop.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-aop-annotation.xml");
         TestCglibProxyBean bean = ctx.getBean(TestCglibProxyBean.class);
         String word = bean.sayHello("rose");
         System.out.println(word);

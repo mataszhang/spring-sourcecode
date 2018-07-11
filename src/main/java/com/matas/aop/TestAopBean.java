@@ -8,6 +8,7 @@ package com.matas.aop;
 public class TestAopBean implements IHello {
     @Override
     public String sayHello(String name) {
+        System.err.println("invoke sayHello");
         return "hello " + name;
     }
 }

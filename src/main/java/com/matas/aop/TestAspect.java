@@ -1,10 +1,7 @@
 package com.matas.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 
 /**
  * @author matas
@@ -14,22 +11,22 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class TestAspect {
     @Pointcut("execution(* *.sayHello(..))")
-    public void sayHello() {
+    public void point() {
     }
 
-    @Before("sayHello()")
+    @Before("execution(* *.sayHello(..))")
     public void beforeTest() {
-        System.out.println("before");
+        System.err.println("before");
     }
 
-    @Before("sayHello()")
+    @After("execution(* *.sayHello(..))")
     public void afterTest() {
-        System.out.println("after");
+        System.err.println("after");
     }
 
-    @Around("sayHello()")
+    @Around("point()")
     public Object aroundTest(ProceedingJoinPoint p) {
-        System.out.println("around before");
+        System.err.println("around before");
         Object o = null;
         try {
             o = p.proceed();
@@ -37,23 +34,10 @@ public class TestAspect {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        System.out.println("around after");
+        System.err.println("around after");
         return o;
     }
 
-    @Around("sayHello()")
-    public Object aroundTest2(ProceedingJoinPoint p) {
-        System.out.println("around before2");
-        Object o = null;
-        try {
-            o = p.proceed();
-            o  = o +" around-2";
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        System.out.println("around after2");
-        return o;
-    }
 
 
 }
