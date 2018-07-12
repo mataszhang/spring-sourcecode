@@ -10,16 +10,16 @@ import org.aspectj.lang.annotation.*;
  */
 @Aspect
 public class TestAspect {
-    @Pointcut("execution(* *.sayHello(..))")
+    @Pointcut("execution(* *.say*(..))")
     public void point() {
     }
 
-    @Before("execution(* *.sayHello(..))")
+    @Before("point()")
     public void beforeTest() {
         System.err.println("before");
     }
 
-    @After("execution(* *.sayHello(..))")
+    @After("point()")
     public void afterTest() {
         System.err.println("after");
     }

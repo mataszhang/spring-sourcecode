@@ -10,5 +10,5 @@
     <aop:aspectj-autoproxy/>
     <bean id="test" class="com.matas.aop.TestAopBean"/>
     <bean id="testCglib" class="com.matas.aop.TestCglibProxyBean"/>
-    <bean class="com.matas.aop.TestAspect"/>
+    <bean id="testAspect" class="com.matas.aop.TestAspect"/>
 </beans>

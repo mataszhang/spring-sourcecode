@@ -3,8 +3,15 @@ package com.matas;
 import com.matas.aop.IHello;
 import com.matas.aop.TestCglibProxyBean;
 import org.junit.Test;
+import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
+import org.springframework.aop.config.AopNamespaceHandler;
+import org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator;
+import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.w3c.dom.Element;
+
+import java.lang.reflect.Method;
 
 /**
  * @author matas
@@ -17,7 +24,12 @@ public class TestAopByAnnotation {
      * JDK 代理
      *
      * @throws Throwable
-     * @see org.springframework.aop.framework.JdkDynamicAopProxy#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])  责任链，aroundTest2 后进先出，所有结果先应用上
+     * @see AopNamespaceHandler 配置aop标签的解析
+     * @see org.springframework.aop.config.AspectJAutoProxyBeanDefinitionParser#parse(Element, ParserContext)  将AnnotationAwareAspectJAutoProxyCreator注册到BeanFactory
+     * @see AnnotationAwareAspectJAutoProxyCreator
+     * @see AbstractAutoProxyCreator#postProcessBeforeInstantiation(java.lang.Class, java.lang.String) 加载aspect
+     * @see AbstractAutoProxyCreator#postProcessAfterInitialization(java.lang.Object, java.lang.String) 创建代理
+     * @see org.springframework.aop.framework.JdkDynamicAopProxy#invoke(java.lang.Object, Method, java.lang.Object[])  责任链，aroundTest2 后进先出，所有结果先应用上
      */
     @Test
     public void testJdkProxy() throws Throwable {
