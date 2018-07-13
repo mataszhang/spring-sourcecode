@@ -14,23 +14,35 @@ import java.util.List;
  * @date 2018/7/5 10:33
  * @email mataszhang@163.com
  */
-public class TestTransaction {
+public class TestTransactionByXML {
     ApplicationContext ctx = null;
 
     @Before
     public void before() {
-        ctx = new ClassPathXmlApplicationContext("test-transaction.xml");
+        ctx = new ClassPathXmlApplicationContext("test-transaction-xml.xml");
     }
 
     @Test
     public void testInsert() {
-        UserService userService = ctx.getBean(UserService.class);
+        UserService userService = ctx.getBean("userServiceWithTrans", UserService.class);
         User user = new User();
         user.setName("a");
         user.setAge(1);
         user.setSex("male");
         userService.save(user);
     }
+
+
+    @Test
+    public void testHardCode() {
+        UserService userService = ctx.getBean("hardCode", UserService.class);
+        User user = new User();
+        user.setName("a");
+        user.setAge(1);
+        user.setSex("male");
+        userService.save(user);
+    }
+
 
     @Test
     public void testList() {
