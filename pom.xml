@@ -5,7 +5,7 @@
     <groupId>com.matas</groupId>
     <artifactId>spring-sourcecode</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>spring-sourcecode</name>
     <url>http://maven.apache.org</url>
@@ -150,9 +150,30 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- servlet,jsp,jstl -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>spring</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -171,6 +192,28 @@
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.7.v20150116</version>
+                <configuration>
+                    <reload>manual</reload>
+                    <scanIntervalSeconds>30000</scanIntervalSeconds>
+                    <!-- 这里根据工程web根目录对应 -->
+                    <webAppSourceDirectory>${basedir}/webapp</webAppSourceDirectory>
+                    <webApp>
+                        <!-- 设置发布 -->
+                        <contextPath>/spring</contextPath>
+                        <!-- 设置默认webdefault.xml,这个主要是为了禁止jetty启动之后,锁定文件.需要修改webdefault.xml里面的useFileMappedBuffer属性为false -->
+                        <defaultsDescriptor>${basedir}/src/main/resources/jetty/webdefault.xml</defaultsDescriptor>
+                    </webApp>
+                    <httpConnector>
+                        <!-- 设置端口 -->
+                        <port>9527</port>
+                    </httpConnector>
                 </configuration>
             </plugin>
 
