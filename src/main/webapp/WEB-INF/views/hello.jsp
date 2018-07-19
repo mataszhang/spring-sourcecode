@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-        hello
+        hello ${requestScope.name}
 </body>
 </html>

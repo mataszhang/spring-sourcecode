@@ -7,11 +7,13 @@ import org.junit.Test;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigUtils;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 import java.util.Map;
@@ -27,6 +29,7 @@ public class TestAutowiredAnnotation {
      * XmlBeanFactory的   {@link org.springframework.beans.factory.annotation.Autowired}
      *
      * @throws Throwable
+     * @see AbstractApplicationContext#registerBeanPostProcessors(ConfigurableListableBeanFactory)
      * @see AbstractAutowireCapableBeanFactory#populateBean(String, RootBeanDefinition, BeanWrapper)  1111行 的hasInstAwareBpps
      * @see AbstractAutowireCapableBeanFactory#initializeBean(String, Object, RootBeanDefinition)  1479行
      * @see AnnotationConfigUtils#registerAnnotationConfigProcessors(BeanDefinitionRegistry, java.lang.Object)  debug调用栈，在处理自定义标签是加入到spring

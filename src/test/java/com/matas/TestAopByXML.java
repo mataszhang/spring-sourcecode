@@ -10,7 +10,9 @@ import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -27,7 +29,6 @@ public class TestAopByXML {
      * @return
      * @author matas
      * @date 2018/7/11 9:
-     *
      * @see ProxyFactory
      */
     @Test
@@ -55,6 +56,7 @@ public class TestAopByXML {
      * ProxyFactoryBean 来创建代理
      *
      * @throws Throwable
+     * @see AbstractApplicationContext#registerBeanPostProcessors(ConfigurableListableBeanFactory)
      * @see ProxyFactoryBean
      * @see DefaultAopProxyFactory
      * @see DefaultAdvisorAdapterRegistry
