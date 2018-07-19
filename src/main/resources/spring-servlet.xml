@@ -8,6 +8,10 @@
 
     <context:component-scan base-package="com.matas"/>
 
+    <!-- org.springframework.web.servlet.config.MvcNamespaceHandler  mvc标签解析，添加RequestMappingHandlerMapping等BeanDefinition到BeanFactory -->
+    <!-- org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping 实现了ApplicationContextAware,InitializingBean接口-->
+    <!-- org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods() 扫描BeanFactroy中@Controller,@RequestMapping的bean，生成映射-->
+    <!-- org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getMappingForMethod()-->
     <mvc:annotation-driven/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
