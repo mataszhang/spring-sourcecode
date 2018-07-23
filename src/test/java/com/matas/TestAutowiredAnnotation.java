@@ -13,6 +13,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigUtils;
+import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
@@ -39,6 +40,8 @@ public class TestAutowiredAnnotation {
         XmlBeanFactory xbf = new XmlBeanFactory(new ClassPathResource("test-autowire-annotation.xml"));
         //AutowiredAnnotationBeanPostProcessor注册到spring中
         xbf.addBeanPostProcessor(xbf.getBean(AutowiredAnnotationBeanPostProcessor.class));
+        //org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization()
+        xbf.addBeanPostProcessor(xbf.getBean(CommonAnnotationBeanPostProcessor.class));
         // xbf.addBeanPostProcessor(xbf.getBean(TestBeanPostProcessor.class));
         System.out.println("=============Spring中已加载的所有的BeanPostProcessor==========");
         Map<String, BeanPostProcessor> beansOfType = xbf.getBeansOfType(BeanPostProcessor.class);

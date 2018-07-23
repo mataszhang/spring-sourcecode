@@ -20,12 +20,30 @@
         <property name="advice" ref="testAdvice2"/>
     </bean>
 
-    <bean id="testAopBean" class="com.matas.aop.TestAopBean"/>
+    <bean id="sayHelloBean" class="com.matas.aop.SayHelloBean"/>
+
+    <bean id="otherHelloBean" class="com.matas.aop.OtherSayHelloBean"/>
 
     <bean
             id="testAop"
             class="org.springframework.aop.framework.ProxyFactoryBean"
             p:interceptorNames="testAdvisor,testAdvisor2"
-            p:targetName="testAopBean"
+            p:targetName="sayHelloBean"
+            p:frozen="false"
+    />
+
+
+    <bean id="hotSwappableTargetSource" class="org.springframework.aop.target.HotSwappableTargetSource">
+        <constructor-arg>
+            <ref bean="sayHelloBean"></ref>
+        </constructor-arg>
+    </bean>
+
+    <bean
+            id="testHotSwap"
+            class="org.springframework.aop.framework.ProxyFactoryBean"
+            p:interceptorNames="testAdvisor"
+            p:targetSource-ref="hotSwappableTargetSource"
+            p:frozen="false"
     />
 </beans>

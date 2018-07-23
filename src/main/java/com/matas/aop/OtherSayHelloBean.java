@@ -5,10 +5,10 @@ package com.matas.aop;
  * @date 2018/7/4 10:28
  * @email mataszhang@163.com
  */
-public class TestAopBean implements IHello {
+public class OtherSayHelloBean implements IHello {
     @Override
     public String sayHello(String name) {
-        System.err.println("invoke sayHello");
-        return "hello " + name;
+        System.err.println("invoke other sayHello");
+        return "hello other " + name;
     }
 }

@@ -60,11 +60,4 @@ public class TestApplicationContext {
         }
         System.out.println("=============Spring中已加载的所有的BeanPostProcessor==========");
     }
-
-    @Test
-    public void testAutowireBeanFactory(){
-        C c = context.getBean(C.class);
-        System.out.println(c.getBeanFactory());
-    }
-
 }
