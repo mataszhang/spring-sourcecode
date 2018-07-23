@@ -7,6 +7,9 @@ import com.matas.circleref.setter.SetterB;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCurrentlyInCreationException;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -15,6 +18,28 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @email mataszhang@163.com
  */
 public class TestCircleRef {
+
+    @Test
+    public void testBind() {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        beanFactory.setAllowCircularReferences(true);
+        RootBeanDefinition a = new RootBeanDefinition(SetterA.class);
+        RootBeanDefinition b = new RootBeanDefinition(SetterB.class);
+
+        beanFactory.registerBeanDefinition("a", a);
+        beanFactory.registerBeanDefinition("b", b);
+
+        //设置属性
+        a.getPropertyValues().addPropertyValue("b", new RuntimeBeanReference("b"));
+        b.getPropertyValues().addPropertyValue("a", new RuntimeBeanReference("a"));
+
+
+        SetterA a1 = beanFactory.getBean("a", SetterA.class);
+        SetterB b1 = beanFactory.getBean("b", SetterB.class);
+
+        System.out.println(a1.getB().equals(b1));
+    }
+
 
     /**
      * 通过构造函数注入，循环引用报错。

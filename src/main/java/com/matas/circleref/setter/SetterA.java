@@ -1,7 +1,5 @@
 package com.matas.circleref.setter;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  * @author matas
  * @date 2018/2/6 11:03
