@@ -195,6 +195,7 @@
                 </configuration>
             </plugin>
 
+            <!--maven 运行在jdk7上, asm和jdk8不兼容-->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
