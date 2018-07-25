@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
@@ -30,6 +32,16 @@ public class TestXmlBeanFactory {
     @Before
     public void before() {
         factory = new XmlBeanFactory(new ClassPathResource("test-context.xml"));
+    }
+
+    @Test
+    public void defaultListableBeanFactory(){
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+        reader.loadBeanDefinitions(new ClassPathResource("test-context.xml"));
+
+        int beanDefinitionCount = factory.getBeanDefinitionCount();
+        System.out.println(beanDefinitionCount);
     }
 
     @Test
