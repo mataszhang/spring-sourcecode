@@ -2,10 +2,12 @@ package com.matas;
 
 import com.matas.aop.IHello;
 import com.matas.aop.SayHelloBean;
-import com.matas.aop.xml.TestAdvisor;
 import com.matas.aop.xml.TestAdvice;
+import com.matas.aop.xml.TestAdvisor;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.SpringProxy;
@@ -99,7 +101,7 @@ public class TestAopByXML {
     }
 
     /**
-     *测试HotSwappableTargetSource
+     * 测试HotSwappableTargetSource
      *
      * @param
      * @return
@@ -117,6 +119,16 @@ public class TestAopByXML {
         hotSwappableTargetSource.swap(ctx.getBean("otherHelloBean", IHello.class));
 
         bean.sayHello("jack");
+    }
+
+
+    @Test
+    public void testBeanNameAutoProxyCreator() {
+        Logger.getRootLogger().setLevel(Level.WARN);
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-aop-autoproxy.xml");
+        IHello sayHelloBean = ctx.getBean("sayHelloBean", IHello.class);
+        sayHelloBean.sayHello("jack");
     }
 
 

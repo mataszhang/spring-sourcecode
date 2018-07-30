@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  * @date 2018/7/10 15:49
  * @email mataszhang@163.com
  */
-public class TestAdvice implements MethodBeforeAdvice, AfterReturningAdvice  {
+public class TestAdvice implements MethodBeforeAdvice, AfterReturningAdvice {
 
     @Override
     public void before(Method method, Object[] args, Object target) throws Throwable {

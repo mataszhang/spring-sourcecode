@@ -24,6 +24,12 @@ public class TestAspect {
         System.err.println("after");
     }
 
+
+    @AfterReturning("point()")
+    public void afterReturning() {
+        System.err.println("afterReturning");
+    }
+
     @Around("point()")
     public Object aroundTest(ProceedingJoinPoint p) {
         System.err.println("around before");

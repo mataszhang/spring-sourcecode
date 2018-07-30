@@ -4,8 +4,11 @@ import com.matas.aop.IHello;
 import com.matas.aop.SayHelloBean;
 import com.matas.aop.TestAspect;
 import com.matas.aop.TestCglibProxyBean;
+import com.matas.aop.introduction.IEat;
 import com.matas.aop.nested.NestInvocationBean;
 import com.matas.aop.nested.TestNestAspect;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.aspectj.weaver.tools.PointcutParser;
 import org.junit.Test;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
@@ -127,4 +130,20 @@ public class TestAopByAnnotation {
         String word = bean.sayHello("rose");
         System.out.println(word);
     }
+
+    @Test
+    public void testIntro(){
+        Logger.getRootLogger().setLevel(Level.WARN);
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("test-aop-annotation.xml");
+        IHello bean = ctx.getBean(IHello.class);
+        bean.sayHello("hello");
+
+        IEat bean1 = ctx.getBean(IEat.class);
+        bean1.eat("apple");
+        System.out.println(bean);
+        System.out.println(bean1);
+
+    }
+
 }

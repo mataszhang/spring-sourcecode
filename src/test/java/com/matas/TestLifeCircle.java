@@ -1,6 +1,8 @@
 package com.matas;
 
 import com.matas.lifecircle.Person;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,6 +18,7 @@ public class TestLifeCircle {
     @Test
     public void test() throws Throwable {
         System.err.println("现在开始初始化容器");
+        Logger.getRootLogger().setLevel(Level.ERROR);
 
         ApplicationContext factory = new ClassPathXmlApplicationContext("test-lifecircle.xml");
         System.err.println("容器初始化成功");
