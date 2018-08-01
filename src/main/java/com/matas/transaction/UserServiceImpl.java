@@ -1,6 +1,8 @@
 package com.matas.transaction;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.Types;
@@ -11,6 +13,7 @@ import java.util.List;
  * @date 2018/7/5 10:16
  * @email mataszhang@163.com
  */
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = {RuntimeException.class, Exception.class})
 public class UserServiceImpl implements UserService {
     private JdbcTemplate jdbcTemplate;
 

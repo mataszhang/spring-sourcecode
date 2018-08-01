@@ -2,6 +2,9 @@ package com.matas;
 
 import com.matas.transaction.User;
 import com.matas.transaction.UserService;
+import com.matas.transaction.nested.NestedServiceImpl;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -37,6 +40,26 @@ public class TestTransactionByAnnotation {
         UserService userService = ctx.getBean(UserService.class);
         List<User> users = userService.getUsers();
         System.out.println(users);
+    }
+
+    /**
+     * 测试PROPAGATION_NESTED
+     *
+     * @param
+     * @return
+     * @author matas
+     * @date 2018/8/1 16:57
+     */
+    @Test
+    public void testNested() {
+        Logger.getRootLogger().setLevel(Level.WARN);
+
+        NestedServiceImpl nestedService = ctx.getBean(NestedServiceImpl.class);
+        User user = new User();
+        user.setName("a");
+        user.setAge(1);
+        user.setSex("male");
+        nestedService.save(user);
     }
 
 

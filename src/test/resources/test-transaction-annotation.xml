@@ -28,4 +28,18 @@
     <bean id="userService" class="com.matas.transaction.UserServiceImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <bean id="oper1" class="com.matas.transaction.nested.Oper1">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="oper2" class="com.matas.transaction.nested.Oper2">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="nestedService" class="com.matas.transaction.nested.NestedServiceImpl">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="oper1" ref="oper1"/>
+        <property name="oper2" ref="oper2"/>
+    </bean>
 </beans>
