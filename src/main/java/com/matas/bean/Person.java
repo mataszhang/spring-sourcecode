@@ -1,10 +1,13 @@
 package com.matas.bean;
 
+import lombok.*;
+
 /**
  * @author matas
  * @date 2018/2/5 17:04
  * @email mataszhang@163.com
  */
+@Data
 public class Person {
     protected String address;
 
@@ -12,14 +15,6 @@ public class Person {
     }
 
     public Person(String address) {
-        this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
         this.address = address;
     }
 
